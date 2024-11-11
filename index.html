@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">TravelBlog</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="login.html">Login</a>
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to TravelBlog</h1>
+            <p>Explore amazing destinations and share your adventures</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card" onclick="showModal('destinations')">
+                <img src="FEATURED DESTINATION.jpeg" alt="Featured destination">
+                <div class="card-content">
+                    <h2>Featured Destinations</h2>
+                    <p>Discover breathtaking locations around the world.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card" onclick="showModal('tips')">
+                <img src="fnfjl.jpeg" alt="Travel tips">
+                <div class="card-content">
+                    <h2>Travel Tips</h2>
+                    <p>Expert advice for your next adventure.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card" onclick="showModal('community')">
+                <img src="dkd.jpeg" alt="Community">
+                <div class="card-content">
+                    <h2>Travel Community</h2>
+                    <p>Connect with fellow travelers.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" class="text-2xl font-bold mb-4"></h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TravelBlog. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

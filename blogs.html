@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blogs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">TravelBlog</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blogs.html" class="active">Blogs</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="login.html">Login</a>
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="blogs-header">
+            <h1>Travel Blogs</h1>
+            <button onclick="showBlogForm()" class="create-btn">Create New Blog</button>
+        </section>
+
+        <section id="blog-form" class="blog-form hidden">
+            <h2>Create New Blog</h2>
+            <form id="createBlogForm" onsubmit="handleBlogSubmit(event)">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input type="url" id="image">
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea id="content" rows="6" required></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit">Save Blog</button>
+                    <button type="button" onclick="hideBlogForm()">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="blogs-container" class="blogs-grid"></section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TravelBlog. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

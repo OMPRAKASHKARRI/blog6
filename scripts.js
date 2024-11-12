@@ -43,11 +43,18 @@ function loadBlogs() {
                 <p>${blog.content.substring(0, 150)}...</p>
                 <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
                     <span>${new Date(blog.date).toLocaleDateString()}</span>
+                    <button onclick="deleteBlog('${blog.id}')" class="delete-btn btn-danger">Delete</button>
                     <button onclick="editBlog('${blog.id}')" class="create-btn">Edit</button>
                 </div>
             </div>
         </div>
     `).join('');
+}
+function deleteBlog(id) {
+    const blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+    const updatedBlogs = blogs.filter(blog => blog.id !== id);
+    localStorage.setItem('blogs', JSON.stringify(updatedBlogs));
+    loadBlogs();
 }
 
 function editBlog(id) {
@@ -237,12 +244,39 @@ function handleLogin(event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    if (isLoggedIn()) { 
+        document.getElementById('loginLink').style.display = 'none';
+        document.getElementById('logoutLink').style.display = 'block';
+      }
     
     // Simple login simulation
     alert(`Login attempted with email: ${email}`);
     window.location.href = 'index.html';
 }
-
+function handleLogout() {
+    // ... Your logout logic (e.g., clear local storage) ...
+    localStorage.removeItem('isLoggedIn');
+  
+    // Update UI: show login link and hide logout link
+    document.getElementById('loginLink').style.display = 'block';
+    document.getElementById('logoutLink').style.display = 'none';
+  
+    // Redirect to homepage or any other relevant page
+    window.location.href = 'index.html'; 
+  }
+  
+  function isLoggedIn() {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
+  
+  // Attach event listener to logout link
+  document.getElementById('logoutLink').addEventListener('click', handleLogout);
+  
+  // Check if the user is already logged in on page load
+  if (isLoggedIn()) {
+    document.getElementById('loginLink').style.display = 'none';
+    document.getElementById('logoutLink').style.display = 'block'; 
+  }
 function handleSignup(event) {
     event.preventDefault();
     const name = document.getElementById('name').value;
